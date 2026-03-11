@@ -1,0 +1,15 @@
+New-Item .gitignore -ItemType File
+notepad .gitignore
+```
+
+Paste isi ini ke notepad lalu save:
+```
+__pycache__/
+*.py[cod]
+*.pyo
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+.env
+secrets.json

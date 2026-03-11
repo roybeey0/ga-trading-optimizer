@@ -1,0 +1,15 @@
+{
+  "ema_fast": 18,
+  "ema_slow": 27,
+  "rsi_period": 7,
+  "rsi_oversold": 30.3138,
+  "rsi_overbought": 71.0301,
+  "atr_period": 17,
+  "atr_multiplier": 2.2637,
+  "bb_period": 13,
+  "bb_std": 1.3314,
+  "stop_loss_pct": 0.0411,
+  "take_profit_pct": 0.044,
+  "position_size_pct": 0.1886,
+  "volume_filter": 1.0414
+}

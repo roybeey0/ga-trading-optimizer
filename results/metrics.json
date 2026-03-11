@@ -1,0 +1,12 @@
+{
+  "total_return": 0.072735,
+  "sharpe_ratio": 1.622495,
+  "sortino_ratio": 0.817902,
+  "calmar_ratio": 8.947977,
+  "max_drawdown": 0.008129,
+  "win_rate": 0.909091,
+  "profit_factor": 9.669989,
+  "total_trades": 11,
+  "avg_trade_return": 0.036008,
+  "fitness": 2.14242
+}

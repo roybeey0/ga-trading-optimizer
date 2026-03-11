@@ -1,0 +1,1 @@
+"""GA Trading Strategy Optimizer — Source Package"""
