@@ -17,16 +17,16 @@
 
 | Metric | Baseline | After GA Optimization |
 |---|---|---|
-| **Total Return** | +0.00% | **+25.47%** |
-| **Sharpe Ratio** | 0.000 | **1.897** |
-| **Sortino Ratio** | — | **1.929** |
-| **Calmar Ratio** | — | **11.02** |
-| **Max Drawdown** | — | **2.31%** |
-| **Win Rate** | — | **83.3%** |
-| **Profit Factor** | — | **13.70** |
-| **Total Trades** | 0 | **6** |
-| **Avg Trade Return** | — | **+12.31%** |
-| **Fitness Score** | -999 | **+2.2354** |
+| **Total Return** | +0.00% | **+7.27%** |
+| **Sharpe Ratio** | 0.000 | **1.6225** |
+| **Sortino Ratio** | — | **0.8179** |
+| **Calmar Ratio** | — | **8.9480** |
+| **Max Drawdown** | — | **0.81%** |
+| **Win Rate** | — | **90.9%** |
+| **Profit Factor** | — | **9.670** |
+| **Total Trades** | 0 | **11** |
+| **Avg Trade Return** | — | **+3.60%** |
+| **Fitness Score** | -999 | **+2.1424** |
 
 > Data: BTC-USD daily candles | Period: March 2024 – March 2026 | Capital: $10,000 | Commission: 0.1%
 
@@ -91,23 +91,23 @@ fitness = (
 
 ```json
 {
-  "ema_fast": 7,
-  "ema_slow": 163,
-  "rsi_period": 19,
-  "rsi_oversold": 37.02,
-  "rsi_overbought": 81.0,
-  "atr_period": 10,
-  "atr_multiplier": 1.6251,
-  "bb_period": 25,
-  "bb_std": 1.3726,
-  "stop_loss_pct": 0.0544,
-  "take_profit_pct": 0.1781,
-  "position_size_pct": 0.321,
-  "volume_filter": 1.0399
+  "ema_fast": 18,
+  "ema_slow": 27,
+  "rsi_period": 7,
+  "rsi_oversold": 30.31,
+  "rsi_overbought": 71.03,
+  "atr_period": 17,
+  "atr_multiplier": 2.2637,
+  "bb_period": 13,
+  "bb_std": 1.3314,
+  "stop_loss_pct": 0.0411,
+  "take_profit_pct": 0.0440,
+  "position_size_pct": 0.1886,
+  "volume_filter": 1.0414
 }
 ```
 
-> Risk:Reward ratio = **1 : 3.27** (stop 5.44% → take profit 17.81%)
+> Win Rate: **90.9%** | Max Drawdown: **0.81%** | Calmar Ratio: **8.95**
 
 ---
 
@@ -116,8 +116,8 @@ fitness = (
 ### 1. Clone & Install
 
 ```bash
-git clone https://github.com/roybeey0/ga-trading-optimizer.git
-cd ga-trading-optimizer
+git clone https://github.com/roybeey0/ga-trading-optimizer-.git
+cd ga-trading-optimizer-
 pip install -r requirements.txt
 ```
 
@@ -177,13 +177,21 @@ ga-trading-optimizer/
 ├── main.py                    # Entry point — run this
 │
 ├── src/
-│   ├── data_loader.py         # yfinance OHLCV fetcher + synthetic fallback
 │   ├── backtester.py          # Custom backtest engine + 8 performance metrics
+│   ├── data_loader.py         # yfinance OHLCV fetcher + synthetic fallback
 │   ├── genetic_algorithm.py   # Full GA: selection, crossover, mutation, elitism
-│   └── visualizer.py          # Dark-theme Matplotlib charts
+│   ├── visualizer.py          # Dark-theme Matplotlib charts
+│   └── __init__.py
 │
 ├── results/                   # Auto-generated after run
+│   ├── best_params.json
+│   ├── metrics.json
+│   ├── trade_log.csv
+│   └── *.png
+│
+├── pyrightconfig.json         # Pylance/VS Code type checking config
 ├── requirements.txt
+├── .gitignore
 └── README.md
 ```
 
@@ -240,11 +248,11 @@ with open('results/best_params.json') as f:
     params = json.load(f)
 
 # Plug into your OKX bot strategy
-ema_fast         = params['ema_fast']           # 7
-ema_slow         = params['ema_slow']           # 163
-stop_loss        = params['stop_loss_pct']      # 0.0544 = 5.44%
-take_profit      = params['take_profit_pct']    # 0.1781 = 17.81%
-position_size    = params['position_size_pct']  # 0.321  = 32.1%
+ema_fast      = params['ema_fast']           # 18
+ema_slow      = params['ema_slow']           # 27
+stop_loss     = params['stop_loss_pct']      # 0.0411 = 4.11%
+take_profit   = params['take_profit_pct']    # 0.0440 = 4.40%
+position_size = params['position_size_pct']  # 0.1886 = 18.86%
 ```
 
 ---
